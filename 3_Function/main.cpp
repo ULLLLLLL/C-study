@@ -4,6 +4,7 @@
 // unsigned int : 반환 자료형 <-Output
 // CalculatorSum : 함수이름
 //(int x, int y) : 매개 변수(파라메타) <-Input
+//return은 숫자 변수가 있을 시에 무조건 사용해야 한다. 그래야 계산 후 문자에 숫자를 입력 즉, 반환을 할 수가 있다.
 
 unsigned int CalculatorSum(int x, int y)
 {// -> 함수 시작
