@@ -32,6 +32,7 @@ unsigned int CalculatorRemain(int x, int y)
 	return x % y;
 }// -> 함수 끝
 
+// 이건 계산이 아니라 호출됐다는 말을 출력하기 위해, 그리고 반환 및 종료를 위해
 void CallFunction()
 {
 	//return;
