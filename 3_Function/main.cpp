@@ -80,6 +80,30 @@ int SumToN(int Num) //1부터 Num까지 더하는 함수
 	return Num + SumToN(Num - 1);
 }
 
+int AAA()
+{
+	while (1)
+	{
+		printf("1st while! Start\n");
+		break;
+		printf("1st while! End\n");
+	}
+	while (1)
+	{
+		printf("2nd while! Start\n");
+		return 0;
+		printf("2nd while! End\n");
+	}
+	while (1)
+	{
+		printf("3rd while! Start\n");
+		break;
+		printf("3rd while! End\n");
+	}
+	return 0;
+}
+
+
 int main()
 {
 	//unsigned int nResult = 0;
@@ -137,7 +161,7 @@ int main()
 	// 5 Factorial 구해라
 	// 5 * 4 * 3 * 2 * 1 = 120;
 
-	int FacResult = 1;
+	//int FacResult = 1;
 /*
 	for (int i = 1; i <= 10; i++) // 1에서 10까지 1씩 더해진 값을 모두 곱한 값
 	{
@@ -160,13 +184,68 @@ int main()
 	printf("FacResult = %d", FacResult);
 */
 
-	printf("FacResult = %d", Factorial(5)); // (-> n부터 1까지 곱하는 방법. -1씩 하다가 i>0에서 False일 때 멈춘다)37번째 줄에서 만든 도구(함수)를 사용한 식
-	printf("FacResult = %d", Factorial(8)); // (1부터 n까지 곱하는 방법. i+1씩 하다가 i<Num에서 False일 때 멈춘다)49번째 줄에서 만든 도구(함수)를 사용한 식
-	printf("ReFactorial FacResult = %d\n", ReFactorial(5)); // (n부터 1까지 곱하는 방법)
-	printf("SumToN FacResult = %d\n", SumToN(4));// 1~n까지 합 구하는 함수
+	//printf("FacResult = %d\n", Factorial(5)) ; // (-> n부터 1까지 곱하는 방법. -1씩 하다가 i>0에서 False일 때 멈춘다)37번째 줄에서 만든 도구(함수)를 사용한 식
+	//printf("FacResult = %d\n", Factorial(8)); // (1부터 n까지 곱하는 방법. i+1씩 하다가 i<Num에서 False일 때 멈춘다)49번째 줄에서 만든 도구(함수)를 사용한 식
+	//printf("ReFactorial FacResult = %d\n", ReFactorial(5)); // (n부터 1까지 곱하는 방법)
+	//printf("SumToN FacResult = %d\n", SumToN(4));// 1~n까지 합 구하는 함수
+
+
+	//int nResult = 1;
+	//int i = 1;
+	////(i <= 10) : <- 이 조건식이 true면 아래 괄호{} 안에 코드를 실행한다
+	////(i <= 10) : <- 이 조건식이 false면 while문을 종료하고 다음 코드 실행
+
+	////while문
+	////조건식이 true면 아래 괄호 안에 코드를 실행한다.
+	////조건식이 false면 while문을 종료하고 다음 코드 실행
+	//while (i <= 10/*조건식*/)
+	//{// <- 반복 처리할 코드 시작
+	//	nResult *= i;
+	//	i++;
+	//}// <- 반복 처리할 코드 종료
+	//printf("while Factorial = %d\n", nResult);
+	//
+	//while (true) //<-true면 무한히 반복돼서 쭈루룩 계속 나온다. 이럴 때 브레이크를 써야 함.
+	//{// <- 반복 처리할 코드 시작
+	//	printf("i=%d\n", i);
+	//	i++;
+	//	printf("break 실행 전\n");
+	//	break; // 이 명령어를 만나면 while 즉시 종료한다. 아래 코드 실행 안됨.
+	//	printf("break 실행 후\n");
+	//}// <- 반복 처리할 코드 종료
+
+	
+	//0부터 Num 짝수만 더하기 1번 방법(while문)
+	// != 0 나머지가 0이 아닌 경우 nResult로 못 넘어가! continue 위로 올라가서 계속 반복해!
+	// 나머지가 0인 경우 nResult로 갔다가 위로 가서 반복해!
+	int i = 0, Num = 10;
+	int nResult = 0;
+	while (i <= Num)
+	{
+		i++;
+		if (i % 2 != 0)
+			continue; // 다음 코드를 실행하지 않고 위로 올라가서 while 코드를 계속 실행
+		nResult += i;
+	}
+	printf("0~Num EvenSum=%d\n", nResult);
+
+	//0부터 Num 짝수만 더하기 2번 방법 (for문)
+	// == 0 나머지가 0인 경우만 모아서 nResult로 보내고 반복해!
+	nResult = 0; //리셋하고 쓰기, Num은 위에서 10으로 지정해줌.
+	for (int i = 0; i <= Num; i++)
+	{
+		if (i % 2 == 0)
+		{
+			nResult += i;
+		}
+	}
+	printf("nResult= %d\n", nResult);
+
+	AAA();
+
 }
 
-
+	
 
 void CallFunction()
 {
