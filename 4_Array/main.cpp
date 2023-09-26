@@ -21,6 +21,7 @@ int g_money = 0;//전역 변수
 static int s_money = 0;
 
 #include "money.h"
+#include "calcFunc.h"
 
 int main()
 {
@@ -33,8 +34,8 @@ int main()
 
 	printf("main t_money=%d\n", t_money);
 	printf("main g_money=%d\n", g_money);
+	printf("1=1 Sum=%d\n", Sum(1, 1));
 
-#include "calcFunc.h"
 
 	bool bRun = true;
 	while (bRun)
