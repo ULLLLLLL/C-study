@@ -1,1 +1,2 @@
 D:\Works\C-study\4_Array\x64\Debug\4_Array.exe
+D:\Works\C++study\4_Array\x64\Debug\4_Array.exe

@@ -1,1 +1,2 @@
 D:\Works\C-study\CalcSum\x64\Debug\CalcSum.exe
+D:\Works\C++study\CalcSum\x64\Debug\CalcSum.exe

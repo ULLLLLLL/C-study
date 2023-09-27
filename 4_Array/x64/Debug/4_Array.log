@@ -1,4 +1,7 @@
-﻿  main.cpp
-D:\Works\C-study\4_Array\main.cpp(212,68): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Works\C-study\4_Array\main.cpp(212,62): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  4_Array.vcxproj -> D:\Works\C-study\4_Array\x64\Debug\4_Array.exe
+﻿  calcFunc.cpp
+  main.cpp
+D:\Works\C++study\4_Array\main.cpp(212,68): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Works\C++study\4_Array\main.cpp(212,62): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  money.cpp
+  코드를 생성하고 있습니다...
+  4_Array.vcxproj -> D:\Works\C++study\4_Array\x64\Debug\4_Array.exe

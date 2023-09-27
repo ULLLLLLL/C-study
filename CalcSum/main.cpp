@@ -1,27 +1,6 @@
 #include<stdio.h>
 
-int Sum(int a, int b)
-{
-		return a + b;
-}
-int Minus(int a, int b)
-{
-	return a - b;
-}
-int Multiply(int a, int b)
-{
-	return a * b;
-}
-
-int division(float a, float b)
-{
-	return a / b;
-}
-
-int remain(int a, int b)
-{
-	return a % b;
-}
+#include"main.h"
 
 int main()
 {
