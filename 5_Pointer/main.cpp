@@ -50,6 +50,30 @@ void BuyiPhone(ePhoneType phoneType, stPhoneShop* pPS)
 	}
 }
 
+//Number 받아서 화면에 출력한다.
+void printNumber(const int* number)
+{
+	// number = nullptr; // 포인터 주소 값을 변경할 수 있다.
+	//*number = 2;
+	printf("print number = %d\n", *number);
+}
+
+void printNumber2(const int& number)
+{
+	// number = nullptr;
+	// number = 4;
+	printf("print number=%d\n", number);
+}
+
+void printPhoneS(const stPhoneShop* ps)
+{
+	printf("print IPhoneCnt=%d\n", ps->iPhoneCnt);
+} // ps뒤에 ->(화살표)를 쓴다.
+
+void printPhoneS(const stPhoneShop& ps) // 얘는 레퍼런스 참조하는 방법 복습
+{
+	printf("print IPhoneCnt=%d\n", ps.iPhoneCnt);
+} // 레퍼런스 참조이기 때문에 ps 뒤에 화살표가 아니라 .(점)으로 쓴다.
 int main()
 {
 	int a = 0;//int는 4Byte
@@ -135,6 +159,28 @@ int main()
 		printf("%d ", value);
 	}
 
-	printf("\nHappy Birthday Dear Minul!\n");
+	printf("\nHappy Birthday Dear 민울!\n");
 
+	// const 상수화
+	// 실수를 줄일 수 있어서 디버깅 횟수를 줄일 수 있다.(디버깅 : 버그를 찾거나 수정하는 모든 행위)
+	const int cint = 100; //상수
+
+	int value = 0;
+	int value2 = 0;
+	int* pValue = &value;
+	// const int* pValue = &value; // 포인터가 가리키는 내용 수정 불가, 포인터 값 수정 가능, 참조 가능
+	// int const* pValue = &value; // 포인터가 가리키는 내용 수정 불가, 포인터 값 수정 가능, 참조 가능
+		// * 별표 왼쪽으로 const가 붙어 있으면 포인터가 가리키는 내용 수정 불가!
+		// * 별표 오른쪽으로 const가 붙어 있으면 포인터 값 수정 불가!
+	// int* const pValue = &value; // 포인터가 가리키는 내용 수정 가능, 포인터 값 수정 불가, 참조 가능
+	// const int* const pValue = &value; // 포인터가 가리키는 내용 수정 불가, 포인터 값 수정 불가, 참조 가능
+	// int const* const pValue = &value; // 포인터가 가리키는 내용 수정 불가, 포인터 값 수정 불가, 참조 가능
+		// * 별표 왼쪽, 오른쪽으로 const가 붙어 있으면 포인터가 가리키는 내용, 포인터 값 둘다 수정 불가!
+
+	*pValue = 2;
+	pValue = &value2;
+	printf("pValue=%d\n", *pValue);
+
+	printNumber(&value);
+	printNumber2(value);
 } 
