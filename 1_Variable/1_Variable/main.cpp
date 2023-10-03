@@ -89,10 +89,10 @@ int main()
 	i2 = 1 * 1;
 	i2 = i2 * 1;
 	i2 *= 1;//i2 = i2 * 1과 동일하다.
-	float divide = 10 / 2.0f;//10 * 0.5f;
+//	float divide = 10 / 2.0f;//10 * 0.5f;
 	// 실수끼리 나머지 연산 불가능(몇번째 소수점 자리를 기준으로 연산을 해야 하는지 알 수 없음)
 	// 즉, 둘 다 정수일 때만 나머지 연산이 가능
-	float remain = 10 % 3;
+//	float remain = 10 % 3;
 
 	int add = 0, minus = 0;//변수를 선언하면 초기화 값을 넣어준다.
 
@@ -151,16 +151,24 @@ int main()
 
 
 	// 문제 아래 time 들어있는 초 값의 분과 시간을 구해라
-	unsigned int sec == 987654321;//초
+	unsigned int seco = 987654321;//초
 	
-	unsigned int day = 0, hour = 0, min = 0, sec = 0;
-	day = 0;
-	hour = 0;
-	min = 0;
-	sec = 0;
+	//unsigned int day = 0, hour = 0, min = 0, sec = 0;
+
+	//day = 0;
+	//hour = 0;
+	//min = 0;
+	//sec = 0;
+
+
+	int divide = seco / 60.0;
+	int sec = seco % 60; //0~59여야 하므로 나머지가 sec
+	int min = divide % 60;
+	int hour = (divide / 60) % 24;
+	int day = (divide / 60) / 24;
+	
 
 	printf("%d", i2);
-	
 	system("pause");
 
 
