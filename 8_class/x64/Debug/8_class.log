@@ -1,0 +1,13 @@
+﻿  class.cpp
+D:\Works\C++study\8_class\class.cpp(1,1): warning C4828: 파일에 0x12fc 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 949).
+D:\Works\C++study\8_class\class.cpp(136,38): warning C4311: '<function-style-cast>': 'int **'에서 'int'(으)로 포인터가 잘립니다.
+D:\Works\C++study\8_class\class.cpp(136,38): warning C4302: '<function-style-cast>': 'int **'에서 'int'(으)로 잘립니다.
+D:\Works\C++study\8_class\class.cpp(136,52): warning C4311: '<function-style-cast>': 'int *'에서 'int'(으)로 포인터가 잘립니다.
+D:\Works\C++study\8_class\class.cpp(136,52): warning C4302: '<function-style-cast>': 'int *'에서 'int'(으)로 잘립니다.
+D:\Works\C++study\8_class\class.cpp(143,40): warning C4311: '<function-style-cast>': 'int *'에서 'int'(으)로 포인터가 잘립니다.
+D:\Works\C++study\8_class\class.cpp(143,40): warning C4302: '<function-style-cast>': 'int *'에서 'int'(으)로 잘립니다.
+D:\Works\C++study\8_class\class.cpp(143,56): warning C4311: '<function-style-cast>': 'int *'에서 'int'(으)로 포인터가 잘립니다.
+D:\Works\C++study\8_class\class.cpp(143,56): warning C4302: '<function-style-cast>': 'int *'에서 'int'(으)로 잘립니다.
+D:\Works\C++study\8_class\class.cpp(145,6): warning C4101: 'a' :참조되지 않은 지역 변수입니다.
+D:\Works\C++study\8_class\class.cpp(114): warning C4172: 지역 변수 또는 임시의 주소를 반환하고 있습니다.
+  8_class.vcxproj -> D:\Works\C++study\8_class\x64\Debug\8_class.exe
