@@ -1,1 +1,2 @@
 D:\Works\C-study\test_1\x64\Debug\test_1.exe
+D:\Works\C++study\test_1\x64\Debug\test_1.exe

@@ -3,18 +3,20 @@
 
 using namespace std;
 //"abcdef\0"
-void minul(wchar_t* _pString)
+/*
+void reverse (wchar_t* _pString)
 {
 	int num = wcslen(_pString);//총 길이를 구함
 	for (int i = 0; i < num / 2; i++)//나누기 2는 돌릴 때 절반만 앞뒤로 바꿔주면 되기 때문
 	{
-		wchar_t c = *(_pString + i); // 첫번째를 구하는 방법
+		wchar_t c = *(_pString + i); // _pString이라는 문자열의 i번째에 있는 문자를 구하는 방법 (첫번째를 구하는 방법)
 		wchar_t r = *(_pString + num-1-i);// 마지막에 \n이 있으므로 하나 빼야지 마지막 알파벳!
 		*(_pString + num - 1 -i) = c;//첫번째 문자의 자리인 c에 마지막 알파벳인 f를 넣는다.
 		*(_pString + i) = r;//마지막 문자의 자리인 f에 첫번째 알파벳인 a를 넣는다.
 	}
 	wprintf(L"%s\n", _pString);
 }
+*/
 
 void Anum(wchar_t* _pString)
 {
@@ -40,21 +42,36 @@ int main()
 			printf("%d ", i);
 		}
 	}
+	/*
+	for (int i = 0; i < 50; i += 2) // 위와 동일한 결과 50까지로 하고  +2씩!
+	{
+		printf("%d", i);
+	}
+	*/
 
 	//n은 숫자 하나를 입력 받기
 	//n의 배수 출력하기(0~100)
 
-	int num = 0;
-	printf("배수를 구하고 싶은 값을 입력하세요");
-	scanf_s("%d", &num);
+	int n = 0;
+	printf("배수를 구하고 싶은 값을 입력하세요 : ");
+	scanf_s("%d", &n);
 	for (int i = 0; i <= 100; i++)
 	{
-		if (i % num == 0)
+		if (i % n == 0)
 		{
 			printf("%d\n", i);
 		}
 	}
 		return 0;
+	/*
+	int n = 2;
+	printf("배수를 구하고 싶은 값을 입력하세요");
+	scanf_s("%d", %n);
+	for (int i = 0; i < 50; i += n) // 위와 동일한 결과 50까지로 하고  +2씩!
+	{
+		printf("%d", i);
+	}
+	*/
 		
 
 	//(0~100) 2의 배수의 개수 출력 .
@@ -69,8 +86,22 @@ int main()
 	printf("\n%d\n", count);
 
 	//abcdef를 역으로 출력하기 fedcba
+	/*
 	wchar_t szWChar[20] = L"abcdef";
-	minul(szWChar);
+	reverse(szWChar);
+	*/
+	wchar_t szWChar[20] = L"abcdef";// wchar_t는 szWChar이라는 이름의 20개짜리 문자열을 받아준다.
+	int size = wcslen(szWChar);
+	printf("size=%d\n", size);
+	for (int i = 1; i <= size; ++i)
+	{
+		printf("%c", szWChar[size - i]);
+	}
+
+	for (int i = size; i >= 0; --i)
+	{
+		printf("%c", szWChar[i - 1]);
+	}
 
 	// wchar_t 형으로 문자 입력 받기
 	// "szWChar Input"이름을 가진
