@@ -13,7 +13,7 @@
 class CBase
 {
 public:
-	CBase(int x):m_X(0)
+	CBase(int x = 1, int y = 2):m_X(x), m_Y(y)
 	{
 		printf("부모 클래스(CBase) 생성\n");
 	}
@@ -21,8 +21,20 @@ public:
 	{
 		printf("부모 클래스(CBase) 파괴\n");
 	}
+
+	// 가상 함수 (virtual tunction)
+	// 자식 클래스에서 재정의 할 것으로 기대하는 멤버함수
+	// 함수 앞에 virtual 키워드를 붙인다.
+	/*
+	virtual	void printValue()
+	{
+		printf("m_X=%d\n", m_X);
+	}
+	*/
+
 public:
 	int m_X;
+	int m_Y;
 };
 
 // 상속 방법 : ": public CBase"와 같이 클래스 뒤에 상속할 부모 클래스를 선언
@@ -31,7 +43,7 @@ class CChild : public CBase
 public:
 	// ":"의 뒤에 부모클래스(CBase)를 넣어서 부모클래스의 생성자 호출
 	// 부모 클래스의 생성자가 먼저 호출 후 자식 생성자가 호출됨.
-	CChild(int x, int y):m_Y(y), CBase(x)
+	CChild(int x = 1, int y = 2, int z = 3):m_Z(z), CBase(x, y)
 	{
 		printf("자식 클래스(CChild) 생성\n");
 	}
@@ -41,15 +53,57 @@ public:
 	{
 		printf("자식 클래스(CChild) 파괴\n");
 	}
+
+	/*
+	virtual	void printValue() override
+	{
+		printf("m_X=%d, m_Y=%d\n", m_X, m_Z); // 아래와 순서도 자유롭게 바꿀 수 있다. (출력 순서)
+
+		CBase::printValue(); // 부모에서의 처리를 호출 - 부모의 클래스에서 스코프 연산으로 함수 호출
+	}
+	*/
+
 public:
-	int m_Y;
+	int m_Z;
 };
+
+// Upcasting(업캐스팅)
+// 자식 -> 부모로 호출 할 때는 별다른 연산자 없이 자동으로 캐스팅(읽어지는) 되는 방법
+void printObject(CBase** pBase, int n) // 업캐스팅 되면 CBase의 크기대로 그냥 잘라버린다. 
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("xpos=%d, ypos=%d\n", pBase[i]->m_X, pBase[i]->m_Y);
+	}
+}
 
 int main()
 {
+	/*
 	CBase base(10);
 	base.m_X = 100;
+	base.printValue();
 
 	CChild child(10, 20);
 	child.m_X = 200; // 상속 받은 부모의 기능을 그대로 사용 가능
+	child.printValue();
+	*/
+	/*
+	//pArrChild - 배열
+	CChild* pArrChild = new CChild[10];
+	printObject(pArrChild, 10); // 자식 쪽에서 부모를 부른 건데 (위 void printObject(CBase...) 부분) 이런 것을 업캐스팅이라고 함. (연산자 없이 가능)
+	delete[] pArrChild;
+	*/
+
+	CBase** pArrBase = new CBase * [10]; // 더블포인터로 받고 위 void printObject printf에서 ->로 지정해주면 출력 숫자가 균일하게 나온다.
+	for (int i = 0; i < 10; i++)
+	{
+		pArrBase[i] = new CChild;
+	}
+	printObject(pArrBase, 10);
+	for(int i =0; i<10; i++)
+	{
+		delete pArrBase[i];
+	}
+	delete[]pArrBase;
 }
