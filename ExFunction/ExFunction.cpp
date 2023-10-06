@@ -41,7 +41,7 @@ void Average(int &Sum, int a, int b, int c)
 
 int ArraySum(int* arr, int length)
 {
-	int Sum = 0;
+	int Sum = 0; // 모든 배열을 합했을 때 값이 들어갈 공간을 만든다.
 	for (int i = 0; i < length ; i++)
 	{
 		Sum = Sum + arr[i];
@@ -127,8 +127,8 @@ int main()
 	int Sum; 
 	Average(Sum, 3, 6, 9);
 	printf("Average=%d\n", Sum);
-	int arr[] = { 0, 1, 2, 3, 4, 5};
-	int length = 6;
+	int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int length = 10;
 	printf("ArraySum=%d\n", ArraySum(arr, length));
 
 
