@@ -27,6 +27,16 @@ enum InputType
 };
 */
 
+//함수 이름 : standardWeight
+//맴버 변수 : float height
+//리턴 값 : float
+//공식 : (height - 100) * 0.9
+
+//함수 이름 : GetBMI
+//맴버 변수 : float weight, float standardWeight
+//리턴 값 : float
+//공식 : (weight - standardWeight)  * 100 / standardWeight
+
 float standardWeight(float height)
 {
     return (height - 100) * 0.9;
@@ -108,7 +118,6 @@ int main()
         return 0;
     }
     */
-
     int a = 0;
     float weight = 0;
     float height = 0;
@@ -128,7 +137,7 @@ int main()
         {
             printf("\n너는 BMI가 비만이야");
         }
-        else if (10 < BMI)
+        else if (10 < BMI && BMI <= 20)
         {
             printf("\n너는 BMI가 과체중이야");
         }
@@ -142,6 +151,50 @@ int main()
     {
         return 0;
     }
+
+
+    /*
+    bool bRun = true;
+
+    while (bRun)
+    {
+        printf("BMI를 계산하시겠습니까?  0)No 1)Yes ");
+        int input = 0;
+        scanf_s("%d", &input);
+
+        switch (input)
+        {
+        case 0:
+            bRun = false;
+            break;
+
+        case 1:
+            int weight = 0, height = 0, BMI = 0;
+            printf("\n몸무게를 입력해주세요 : ");
+            scanf_s("%f", &weight);
+            printf("\n키를 입력해주세요 : ");
+            scanf_s("%f", &height);
+            BMI = GetBMI(weight, standardWeight(height));
+
+            if (BMI > 20)
+            {
+                printf("\n너는 BMI가 비만이야");
+            }
+            else if (10 < BMI && BMI <= 20)
+            {
+                printf("\n너는 BMI가 과체중이야");
+            }
+            else
+            {
+                printf("\n너는 BMI가 정상이야");
+            }
+            break;
+
+        default:
+            break;
+        }
+    }
+    */
 
     //float standardWeight(float height)
     //{
