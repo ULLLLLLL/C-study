@@ -7,24 +7,23 @@
 
 using namespace std;
 
-struct stTest
-{
-	string m_name = ""; // 문자는 큰따옴표로 넣는다.
-	int m_math = 0;
-	int m_eng = 0;
-	int m_lang = 0;
+struct stTest // 구조체 : 메인문 밖에만 쓸 수 있다. 형태가 다른 함수들을 포함할 수 있다.
+{			  // 배열 : 형태가 같은 변수들을 포함할 수 있다.
+	string m_name; // 멤버변수 : 구조체 안에 있는 함수들
+	int m_math;
+	int m_eng;
+	int m_lang;
 
-	stTest(string name, int math, int eng, int lang):
-		m_name(name), m_math(math), m_eng(eng), m_lang(lang) {}
+	stTest(string name = "", int math = 0, int eng = 0, int lang = 0) : // 문자는 큰따옴표로 넣는다. // stTest라는 함수에 string, int들이 포함되어 있는 것이다.
+		m_name(name), m_math(math), m_eng(eng), m_lang(lang) {} // 멤버 변수에 위에서 만든 변수들의 값이 들어가는 것이다.
 
 	void printTest()
 	{
 		printf("name=%s, math=%d, eng=%d, lang=%d\n", m_name.c_str(), m_math, m_eng, m_lang);
 	}
-};
 
-void pushStTest(vector<stTest>& vecTest, string& str)
-{
+	void SetData(string& str)
+	{
 		stringstream ssTest(str);//string 문자열을 stringstream 변수 형태로 만든다.
 		string line; // 읽어온 string 담아둘 변수
 
@@ -33,10 +32,30 @@ void pushStTest(vector<stTest>& vecTest, string& str)
 		while (getline(ssTest, line, ','))
 		{
 			line.erase(remove(line.begin(), line.end(), ' '), line.end());
-			printf("line[%s]\n", line.c_str());
-		}
 
-}
+			int index = line.find('=');
+			string leftStr = line.substr(0, index);
+			string rightStr = line.substr(index + 1, line.length() - index);
+
+			if (leftStr == "name")
+			{
+				m_name = rightStr;
+			}
+			else if (leftStr == "math")
+			{
+				m_math = stoi(rightStr);
+			}
+			else if (leftStr == "eng")
+			{
+				m_eng = stoi(rightStr);
+			}
+			else if (leftStr == "lang")
+			{
+				m_lang = stoi(rightStr);
+			}
+		}
+	}
+};
 
 
 int main()
@@ -70,10 +89,12 @@ int main()
 		while (!readFile.eof()) // eof : 반복할 때 어디까지 실행했는지 저장해주는 용도
 		{
 			std::string str;
-			std::getline(readFile, str); // readFile의 텍스트를 한줄 읽어서  str에 넣는다.
-			printf("str=%s\n", str.c_str());
+			std::getline(readFile, str);// readFile에 텍스트를 한줄 읽어서 str에 넣는다.
+			//printf("str=%s\n", str.c_str());
 
-			pushStTest(vecTest, str);
+			stTest newData;
+			newData.SetData(str);
+			vecTest.push_back(newData);
 			//// str
 			//// a=100
 			//// b=200
