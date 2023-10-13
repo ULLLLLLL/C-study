@@ -39,4 +39,5 @@ public:
 
 	float LocX;
 	bool IsMoveRight=true;
+	bool IsPlay=false;
 };
