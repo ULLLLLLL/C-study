@@ -2,9 +2,10 @@
 
 
 #include "MoveLeftRight.h"
+#include "Switch.h"
 
 // Sets default values
-AMoveLeftRight::AMoveLeftRight():LocX(0), IsMoveRight(true), IsPlay(false)
+AMoveLeftRight::AMoveLeftRight():m_LocX(0), m_IsMoveRight(true), m_IsPlay(false)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -51,6 +52,8 @@ AMoveLeftRight::~AMoveLeftRight()
 void AMoveLeftRight::BeginPlay()
 {
 	Super::BeginPlay();
+	if (IsValid(m_Switch))
+		m_Switch->FDele_EventOverlap.AddDynamic(this, &AMoveLeftRight::EventOverlap);
 }
 
 // Called every frame
@@ -65,30 +68,37 @@ void AMoveLeftRight::Tick(float DeltaTime)
 	//LocX -= 1; // 왼쪽
 	// SetRelativeLocation : 상대적인 위치값을 설정한다.
 	// FVector : 언리얼에서 사용하는 3차원 좌표 변수
-	StaticMesh->SetRelativeLocation(FVector(LocX,0,0));
+	// StaticMesh->SetRelativeLocation(FVector(LocX,0,0));
 	
-	if (IsPlay == false)
+	if (m_IsPlay == false)
 		return;
 	
-	if (IsMoveRight) // 움직임 방향                                                                                                                                                                                                                                                   
+	if (m_IsMoveRight) // 움직임 방향                                                                                                                                                                                                                                                   
 	{
-		LocX += 1;
-		StaticMesh->SetRelativeLocation(FVector(LocX, 0, 0)); // 이게 Set Relative Location과 동일하다.
-		if (LocX >= 200)
+		m_LocX += 1;
+		StaticMesh->SetRelativeLocation(FVector(m_LocX, 0, 0)); // 이게 Set Relative Location과 동일하다.
+		if (m_LocX >= 200)
 		{
-			IsMoveRight = false;
+			m_IsMoveRight = false;
 		}
 	}
 	else
 	{
-		LocX -= 1;
-		StaticMesh->SetRelativeLocation(FVector(LocX, 0, 0));
-		if (LocX <= -200)
+		m_LocX -= 1;
+		StaticMesh->SetRelativeLocation(FVector(m_LocX, 0, 0));
+		if (m_LocX <= -200)
 		{
-			IsMoveRight = true;
+			m_IsMoveRight = true;
 		}
 	}
-	
-
 }
 
+void AMoveLeftRight::EventOverlap(bool isBegin)
+{
+	m_IsPlay = isBegin;
+}
+
+void AMoveLeftRight::Code_DoPlay_Implementation(bool IsPlay)
+{
+	m_IsPlay = IsPlay;
+}

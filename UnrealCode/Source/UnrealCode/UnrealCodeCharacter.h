@@ -9,7 +9,7 @@
 
 
 UCLASS(config=Game)
-class AUnrealCodeCharacter : public ACharacter
+class AUnrealCodeCharacter : public ACharacter // 상속받는다! 부모의 기능을 public ACharacter가 가져옴
 {
 	GENERATED_BODY()
 
@@ -49,6 +49,7 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 			
+	virtual void Jump()override; // 자식이 상속받은 내용(Jump)을 재구현 할 때 override를 써야 한다.
 
 protected:
 	// APawn interface
@@ -62,5 +63,9 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite) // 이용하고 싶은 변수 위에 붙여서 쓴다.
+	bool bdisableJump;
+
 };
 

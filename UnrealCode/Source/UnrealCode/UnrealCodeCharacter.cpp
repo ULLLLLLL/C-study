@@ -14,7 +14,7 @@
 //////////////////////////////////////////////////////////////////////////
 // AUnrealCodeCharacter
 
-AUnrealCodeCharacter::AUnrealCodeCharacter()
+AUnrealCodeCharacter::AUnrealCodeCharacter():bdisableJump(false) // 초기값을 넣어준다.
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -75,7 +75,7 @@ void AUnrealCodeCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
 		//Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump); // 캐릭터에 점프라는 함수가 있다!
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		//Moving
@@ -122,6 +122,15 @@ void AUnrealCodeCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AUnrealCodeCharacter::Jump() 
+{
+	if(bdisableJump==true) // ==비교연산자 사용(bdisableJump 변수가 true면 return을 시키고 아니면 jump를 하게 하기 위해서)
+	{ 
+		return;				// true면 점프 안 함. false면 점프!
+	}
+	Super::Jump(); // Super: 부모함수의 내용을 꺼내올 때 쓴다.
 }
 
 
